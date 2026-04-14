@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\api\\UniversityApi\\",
+  "WorkspaceRootPath": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\University-System\\api\\UniversityApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{27AED2F0-09C5-EFB8-B30A-5D1DBDA25609}|Day4.csproj|c:\\users\\tarek masood\\downloads\\project\\universitysystem\\api\\universityapi\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{27AED2F0-09C5-EFB8-B30A-5D1DBDA25609}|Day4.csproj|c:\\users\\tarek masood\\downloads\\project\\universitysystem\\university-system\\api\\universityapi\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27AED2F0-09C5-EFB8-B30A-5D1DBDA25609}|Day4.csproj|solutionrelative:controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -28,11 +28,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DepartmentController.cs",
-              "DocumentMoniker": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\api\\UniversityApi\\Controllers\\DepartmentController.cs",
+              "DocumentMoniker": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\University-System\\api\\UniversityApi\\Controllers\\DepartmentController.cs",
               "RelativeDocumentMoniker": "Controllers\\DepartmentController.cs",
-              "ToolTip": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\api\\UniversityApi\\Controllers\\DepartmentController.cs",
+              "ToolTip": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\University-System\\api\\UniversityApi\\Controllers\\DepartmentController.cs",
               "RelativeToolTip": "Controllers\\DepartmentController.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAADwv2MAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAADwv2gAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-14T00:08:31.153Z",
               "EditorCaption": ""

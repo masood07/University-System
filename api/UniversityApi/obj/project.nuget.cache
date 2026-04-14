@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p4lUCSvlGDA=",
+  "dgSpecHash": "pWYUwUDpk7k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\api\\UniversityApi\\Day4.csproj",
+  "projectFilePath": "C:\\Users\\TAREK MASOOD\\Downloads\\project\\UniversitySystem\\University-System\\api\\UniversityApi\\Day4.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TAREK MASOOD\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\TAREK MASOOD\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

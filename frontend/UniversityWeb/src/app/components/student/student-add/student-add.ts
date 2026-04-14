@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, output, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { IStudent } from '../../../models/i-student';
 import { FormsModule } from '@angular/forms';
 import { StudentService } from '../../../_services/student-service';
@@ -18,6 +18,9 @@ export class StudentAdd implements OnInit
   deptSer=inject(DepartmentService);
   route = inject(ActivatedRoute);
   isEditMode = false;
+  router=inject(Router);
+  stdSer=inject(StudentService)
+  std:IStudent={}
 
   ngOnInit(): void {
     this.deptSer.getAll().subscribe(
@@ -35,6 +38,19 @@ export class StudentAdd implements OnInit
       }
 
       this.isEditMode = true;
+
+      const navigationState = this.router.getCurrentNavigation()?.extras.state ?? history.state;
+      const prefill = navigationState?.student as IStudent | undefined;
+      if (prefill?.id === id) {
+        this.std = {
+          id: prefill.id,
+          name: prefill.name,
+          age: prefill.age,
+          address: prefill.address,
+          deptid: prefill.deptid,
+        };
+      }
+
       this.stdSer.getById(id).subscribe((s) => {
         this.std = {
           id: s.id,
@@ -46,10 +62,7 @@ export class StudentAdd implements OnInit
       });
     });
   }
-  //constructor(public router:Router){}
-  router=inject(Router);
-  stdSer=inject(StudentService)
-  std:IStudent={}
+
   save(){
     if (this.isEditMode && this.std.id) {
       this.stdSer.update(this.std).subscribe(() => {

@@ -19,7 +19,15 @@ export class Course implements OnInit {
   }
 
   loadCourses() {
-    this.courseService.getAll().subscribe((d) => this.courses.set(d));
+    this.courseService.getAll().subscribe((d: any[]) => {
+      const normalized = (d ?? []).map((item) => ({
+        id: this.normalizeNumericId(item?.id ?? item?.ID ?? item?.courseId ?? item?.CourseId),
+        name: item?.name ?? item?.Name,
+        maxDegree: item?.maxDegree ?? item?.MaxDegree,
+      }));
+
+      this.courses.set(normalized);
+    });
   }
 
   save() {
@@ -50,5 +58,14 @@ export class Course implements OnInit {
     if (!ok) return;
 
     this.courseService.delete(id).subscribe(() => this.loadCourses());
+  }
+
+  private normalizeNumericId(value: unknown) {
+    if (typeof value === 'number') return value;
+    if (typeof value === 'string' && value.trim() !== '') {
+      const parsed = Number(value);
+      return Number.isFinite(parsed) ? parsed : undefined;
+    }
+    return undefined;
   }
 }
