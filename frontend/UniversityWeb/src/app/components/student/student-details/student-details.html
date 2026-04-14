@@ -1,0 +1,20 @@
+<div class="container app-section">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">Student Details</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush border rounded-3 overflow-hidden">
+                        <li class="list-group-item d-flex justify-content-between"><strong>ID</strong> <span>{{std().id}}</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><strong>Name</strong> <span>{{std().name}}</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><strong>Age</strong> <span>{{std().age}}</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><strong>Address</strong> <span>{{std().address}}</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><strong>Department</strong> <span>{{std().departmentName}}</span></li>
+                    </ul>
+                    <a routerLink="/students" class="btn btn-dark mt-3">Back to Students</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

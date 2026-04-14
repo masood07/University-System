@@ -1,0 +1,67 @@
+<section class="container app-section">
+	<div class="p-4 p-md-5 mb-4 bg-white rounded-4 shadow-sm border">
+		<span class="badge text-bg-primary mb-3">Index Dashboard</span>
+		<h1 class="display-6 fw-bold section-title mb-3">University Management Portal</h1>
+		<p class="lead text-muted-2 mb-4">Use this page as your starting point. Open each module from here to manage students, departments, courses, and academic results.</p>
+		<div class="d-flex flex-wrap gap-2">
+			<a class="btn btn-primary btn-lg" routerLink="/students">Manage Students</a>
+			<a class="btn btn-outline-primary btn-lg" routerLink="/departments">Manage Departments</a>
+			<a class="btn btn-outline-dark btn-lg" routerLink="/courses">Manage Courses</a>
+			<a class="btn btn-success btn-lg" routerLink="/results">Open Results</a>
+		</div>
+	</div>
+
+	<div class="row g-3 mb-4">
+		<div class="col-md-4">
+			<div class="card h-100 border-start border-4 border-primary">
+				<div class="card-body">
+					<p class="text-muted-2 mb-1">Total Students</p>
+					<h3 class="fw-bold mb-0">{{studentsCount()}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card h-100 border-start border-4 border-warning">
+				<div class="card-body">
+					<p class="text-muted-2 mb-1">Total Departments</p>
+					<h3 class="fw-bold mb-0">{{departmentsCount()}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card h-100 border-start border-4 border-success">
+				<div class="card-body">
+					<p class="text-muted-2 mb-1">Total Courses</p>
+					<h3 class="fw-bold mb-0">{{coursesCount()}}</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row g-3">
+		<div class="col-md-4">
+			<div class="card h-100">
+				<div class="card-body">
+					<h5 class="fw-bold">Students Module</h5>
+					<p class="text-muted-2 mb-0">Maintain student profiles and department assignments.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card h-100">
+				<div class="card-body">
+					<h5 class="fw-bold">Departments Module</h5>
+					<p class="text-muted-2 mb-0">Create departments and map related courses clearly.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card h-100">
+				<div class="card-body">
+					<h5 class="fw-bold">Results Module</h5>
+					<p class="text-muted-2 mb-0">Assign degrees and generate student grade reports by filters.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

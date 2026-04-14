@@ -1,0 +1,9 @@
+.toast-stack {
+  z-index: 1080;
+  width: min(92vw, 360px);
+}
+
+.toast {
+  overflow: hidden;
+  border-radius: 0.85rem;
+}

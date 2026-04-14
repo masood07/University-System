@@ -1,0 +1,27 @@
+.app-navbar {
+    background: linear-gradient(140deg, #0f1d3a 0%, #14264b 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0.45rem 1rem rgba(10, 21, 42, 0.28);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+.nav-link {
+    font-weight: 600;
+    color: #d7e1f8;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: #ffffff;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}

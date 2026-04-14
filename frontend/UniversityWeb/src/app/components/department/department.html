@@ -1,0 +1,139 @@
+<div class="container app-section">
+  <div class="d-flex justify-content-between align-items-end mb-3">
+    <div>
+      <h2 class="section-title mb-1">Department Management</h2>
+      <p class="text-muted-2 mb-0">Create departments and manage their related courses.</p>
+    </div>
+  </div>
+
+  @if (statusMessage()) {
+    <div class="alert mb-3" [class.alert-danger]="isError()" [class.alert-success]="!isError()">
+      {{statusMessage()}}
+    </div>
+  }
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">Department Form</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input class="form-control" [(ngModel)]="dep.name" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input class="form-control" [(ngModel)]="dep.location" />
+          </div>
+          <button class="btn btn-success w-100" (click)="save()">Save</button>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mt-4">
+        <div class="card-header bg-secondary text-white">Manage Department Courses</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Department</label>
+            <select class="form-select" [(ngModel)]="selectedDepartmentId" (ngModelChange)="onDepartmentSelectionChange()">
+              <option [ngValue]="undefined">Select department</option>
+              @for (item of departments(); track item.id) {
+                <option [ngValue]="item.id">{{item.name}}</option>
+              }
+            </select>
+          </div>
+
+          @if (selectedDepartmentId) {
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Available Courses</label>
+                <div class="border rounded-3 p-2 course-options">
+                  @if (!getAvailableCourses().length) {
+                    <small class="text-muted">No available courses to add.</small>
+                  }
+
+                  @for (c of getAvailableCourses(); track c.id) {
+                    <label class="form-check d-flex align-items-center gap-2 py-1">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        [checked]="isCourseSelected(c.id, 'add')"
+                        (change)="toggleCourseSelection(c.id, $any($event.target).checked, 'add')"
+                      />
+                      <span>{{c.id}} - {{c.name}}</span>
+                    </label>
+                  }
+                </div>
+                <small class="text-muted d-block mt-2">Selected to add: {{selectedAddCourseIds.length}}</small>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Assigned Courses</label>
+                <div class="border rounded-3 p-2 course-options">
+                  @if (!getAssignedCourses().length) {
+                    <small class="text-muted">No courses assigned to this department.</small>
+                  }
+
+                  @for (c of getAssignedCourses(); track c.id) {
+                    <label class="form-check d-flex align-items-center gap-2 py-1">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        [checked]="isCourseSelected(c.id, 'remove')"
+                        (change)="toggleCourseSelection(c.id, $any($event.target).checked, 'remove')"
+                      />
+                      <span>{{c.id}} - {{c.name}}</span>
+                    </label>
+                  }
+                </div>
+                <small class="text-muted d-block mt-2">Selected to remove: {{selectedRemoveCourseIds.length}}</small>
+              </div>
+            </div>
+          }
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-success flex-fill" (click)="addCoursesToDepartment()">Add Courses</button>
+            <button class="btn btn-warning flex-fill" (click)="removeCoursesFromDepartment()">Remove Courses</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Departments</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of departments(); track item.id) {
+                  <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.location}}</td>
+                    <td class="d-flex flex-wrap gap-2">
+                      <button class="btn btn-sm btn-primary" (click)="edit(item)">Edit</button>
+                      <button class="btn btn-sm btn-danger" (click)="remove(item)">Delete</button>
+                    </td>
+                  </tr>
+                }
+                @if (!departments().length) {
+                  <tr>
+                    <td colspan="4" class="text-center text-muted py-3">No departments found. Add one using the form.</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

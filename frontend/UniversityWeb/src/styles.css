@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --app-bg: #e8eef8;
+    --app-bg-soft: #dfe8f7;
+    --app-text: #12233f;
+    --app-muted: #526583;
+    --app-primary: #14264b;
+    --app-primary-strong: #0f1d3a;
+    --app-primary-soft: #1e3a70;
+    --app-accent: #ffd166;
+    --app-success: #1d7b63;
+}
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(20, 38, 75, 0.12), transparent 35%),
+        radial-gradient(circle at 86% 14%, rgba(15, 29, 58, 0.08), transparent 30%),
+        linear-gradient(180deg, var(--app-bg-soft) 0%, var(--app-bg) 100%),
+        var(--app-bg);
+    color: var(--app-text);
+    min-height: 100vh;
+}
+
+.app-section {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.card {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 1.2rem rgba(15, 23, 42, 0.08);
+}
+
+.card-header {
+    border-bottom: 0;
+    font-weight: 700;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    white-space: nowrap;
+}
+
+.section-title {
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+.text-muted-2 {
+    color: var(--app-muted);
+}
+
+.bg-primary {
+    background-color: var(--app-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--app-primary-soft) !important;
+}
+
+.bg-dark {
+    background-color: var(--app-primary-strong) !important;
+}
+
+.btn-primary {
+    background-color: var(--app-primary);
+    border-color: var(--app-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    background-color: var(--app-primary-strong);
+    border-color: var(--app-primary-strong);
+}
+
+.btn-success {
+    background-color: var(--app-success);
+    border-color: var(--app-success);
+}
+
+.btn-success:hover,
+.btn-success:focus-visible {
+    background-color: #17624f;
+    border-color: #17624f;
+}
+
+.btn-dark {
+    background-color: var(--app-primary-strong);
+    border-color: var(--app-primary-strong);
+}
+
+.btn-dark:hover,
+.btn-dark:focus-visible {
+    background-color: #0a1328;
+    border-color: #0a1328;
+}
+
+.btn-warning {
+    background-color: var(--app-accent);
+    border-color: var(--app-accent);
+    color: #2d2a18;
+}
+
+.btn-warning:hover,
+.btn-warning:focus-visible {
+    background-color: #f6c24f;
+    border-color: #f6c24f;
+    color: #2d2a18;
+}
+
+.btn-outline-dark {
+    color: var(--app-primary);
+    border-color: var(--app-primary);
+}
+
+.btn-outline-dark:hover,
+.btn-outline-dark:focus-visible {
+    background-color: var(--app-primary);
+    border-color: var(--app-primary);
+    color: #ffffff;
+}

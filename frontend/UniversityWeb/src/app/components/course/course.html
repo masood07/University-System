@@ -1,0 +1,60 @@
+<div class="container app-section">
+  <div class="d-flex justify-content-between align-items-end mb-3">
+    <div>
+      <h2 class="section-title mb-1">Course Management</h2>
+      <p class="text-muted-2 mb-0">Create and maintain courses with their maximum degrees.</p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">Course Form</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Course Name</label>
+            <input class="form-control" [(ngModel)]="course.name" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Max Degree</label>
+            <input type="number" class="form-control" [(ngModel)]="course.maxDegree" />
+          </div>
+          <button class="btn btn-success w-100" (click)="save()">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Courses</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Max Degree</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of courses(); track item.id) {
+                  <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.maxDegree}}</td>
+                    <td class="d-flex gap-2">
+                      <button class="btn btn-sm btn-primary" (click)="edit(item)">Edit</button>
+                      <button class="btn btn-sm btn-danger" (click)="remove(item)">Delete</button>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<section class="container app-section">
+  <div class="d-flex justify-content-between align-items-end mb-3">
+    <div>
+      <h2 class="section-title mb-1">Academic Results</h2>
+      <p class="text-muted-2 mb-0">Assign student degrees and generate course results by department.</p>
+    </div>
+  </div>
+
+  @if (statusMessage()) {
+    <div class="alert mb-3" [class.alert-danger]="isError()" [class.alert-success]="!isError()">
+      {{statusMessage()}}
+    </div>
+  }
+
+  <div class="row g-4 mb-4">
+    <div class="col-lg-4">
+      <div class="card h-100">
+        <div class="card-header bg-primary text-white">Assign Degree</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Department</label>
+            <select class="form-select" [(ngModel)]="assignDeptId" (change)="onAssignDepartmentChange()">
+              <option [ngValue]="undefined">Select department</option>
+              @for (item of departments(); track item.id) {
+                <option [ngValue]="item.id">{{item.name}}</option>
+              }
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Student</label>
+            <select class="form-select" [(ngModel)]="studentId" (change)="onStudentChange()" [disabled]="!assignDeptId || !assignStudents().length">
+              <option [ngValue]="undefined">Select student</option>
+              @for (item of assignStudents(); track item.id) {
+                <option [ngValue]="item.id">{{item.name}}</option>
+              }
+            </select>
+            @if (assignDeptId && !assignStudents().length) {
+              <small class="text-danger d-block mt-1">No students found for selected department.</small>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Course</label>
+            <select class="form-select" [(ngModel)]="selectedCourseId" [disabled]="!studentId || !assignableCourses().length">
+              <option [ngValue]="undefined">Select course</option>
+              @for (item of assignableCourses(); track item.id) {
+                <option [ngValue]="item.id">{{item.name}}</option>
+              }
+            </select>
+            @if (studentId && !assignableCourses().length) {
+              <small class="text-danger d-block mt-1">No courses found for selected student.</small>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Degree</label>
+            <input class="form-control" type="number" [(ngModel)]="degree" placeholder="Enter degree" />
+          </div>
+
+          <button class="btn btn-success w-100" (click)="saveDegree()">Save Degree</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card h-100">
+        <div class="card-header bg-secondary text-white">Student Grade Report</div>
+        <div class="card-body">
+          <div class="row g-3 align-items-end">
+            <div class="col-md-5">
+              <label class="form-label">Department</label>
+              <select class="form-select" [(ngModel)]="filterDeptId" (change)="onFilterDepartmentChange()">
+                <option [ngValue]="undefined">Select department</option>
+                @for (item of departments(); track item.id) {
+                    <option [ngValue]="item.id">{{item.name}}</option>
+                }
+              </select>
+            </div>
+
+            <div class="col-md-5">
+              <label class="form-label">Course</label>
+              <select class="form-select" [(ngModel)]="filterCourseId" [disabled]="!filterDeptId || !reportCourses().length">
+                <option [ngValue]="undefined">Select course</option>
+                @for (item of reportCourses(); track item.id) {
+                  <option [ngValue]="item.id">{{item.name}}</option>
+                }
+              </select>
+              @if (filterDeptId && !reportCourses().length) {
+                <small class="text-danger d-block mt-1">No courses assigned to selected department.</small>
+              }
+            </div>
+
+            <div class="col-md-2 d-grid">
+              <button class="btn btn-dark" (click)="searchByCourseAndDepartment()">Generate</button>
+            </div>
+          </div>
+
+          @if (filteredStudents().length) {
+            <div class="table-responsive mt-3">
+              <table class="table table-bordered table-hover align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Degree</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (item of filteredStudents(); track item.studentId) {
+                    <tr>
+                      <td>{{item.studentId}}</td>
+                      <td>{{item.studentName}}</td>
+                      <td><span class="badge text-bg-primary">{{item.degree}}</span></td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

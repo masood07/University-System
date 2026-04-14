@@ -1,0 +1,17 @@
+<form [formGroup]="model" (ngSubmit)="onsubmit()" >
+    id<input type="text" formControlName="id">
+    @if(id.hasError('required')){
+        
+    }
+    <br>
+    name<input type="text" formControlName="name"><br>
+    age<input type="text" formControlName="age"><br>
+    <div formArrayName="skills">
+        <button (click)="addskill()">add skill</button>
+        @for (item of skills.controls; track $index;let i=$index) {
+            <input [formControlName]="i">
+        }
+    </div>
+    <input type="submit" value="show" [disabled]="model.invalid">
+</form>
+<button (click)="update()">up</button>

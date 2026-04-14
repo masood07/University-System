@@ -1,0 +1,8 @@
+.list-group-item strong {
+	color: #1f2937;
+}
+
+.list-group-item span {
+	color: #0f172a;
+	font-weight: 500;
+}
